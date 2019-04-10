@@ -2,7 +2,15 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 function NavBar(props) {
-	const { currentUser } = props;
+	const { currentUser, onSignOut } = props;
+
+	const handleSignOutClick = event => {
+		event.preventDefault();
+		if (typeof onSignOut === "function") {
+			onSignOut();
+		}
+	}
+
 	return (
 		<nav
 			style={{
@@ -14,7 +22,14 @@ function NavBar(props) {
             <NavLink to="/">Home</NavLink>
 			<NavLink to="/habits">My Habits</NavLink>
 			{!currentUser && <NavLink to="/sign_in">Sign In</NavLink>}
-			{currentUser && <span>{currentUser.full_name}</span>}
+			{currentUser && (
+				<>
+					<span>{currentUser.full_name}</span>
+					<a href="#boo" onClick={handleSignOutClick}>
+            			Sign Out
+          			</a>
+				</>
+			)}
 		</nav>
 	);
 }

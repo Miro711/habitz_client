@@ -5,7 +5,7 @@ import HabitShowPage from './HabitShowPage';
 import HabitIndexPage from './HabitIndexPage';
 import NavBar from './NavBar';
 import SignInPage from './SignInPage';
-import { User } from '../requests';
+import { User, Session } from '../requests';
 
 class App extends Component {
     constructor(props){
@@ -15,6 +15,15 @@ class App extends Component {
             isLoading: true,
         }
         this.getUser = this.getUser.bind(this);
+        this.signOut = this.signOut.bind(this);
+    }
+
+    signOut(){
+        Session.destroy().then(() => {
+            this.setState({
+                currentUser: null
+            });
+        });
     }
 
     getUser(){
@@ -42,7 +51,7 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div>
-                    <NavBar currentUser={currentUser}/>
+                    <NavBar currentUser={currentUser} onSignOut={this.signOut}/>
                     <Switch>
                         <Route path="/" exact component={WelcomePage} />
                         <Route path="/habits/" exact component={HabitIndexPage} />
