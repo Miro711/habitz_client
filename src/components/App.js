@@ -5,6 +5,7 @@ import HabitShowPage from './HabitShowPage';
 import HabitIndexPage from './HabitIndexPage';
 import NavBar from './NavBar';
 import SignInPage from './SignInPage';
+import HabitNewPage from './HabitNewPage';
 import { User, Session } from '../requests';
 
 class App extends Component {
@@ -55,6 +56,7 @@ class App extends Component {
                     <Switch>
                         <Route path="/" exact component={WelcomePage} />
                         <Route path="/habits/" exact component={HabitIndexPage} />
+                        <Route path="/habits/new" component={HabitNewPage} />
                         <Route path="/habits/:id" component={HabitShowPage} />
                         <Route path="/sign_in" render={routeProps => (
                                 <SignInPage onSignIn={this.getUser} {...routeProps}/>

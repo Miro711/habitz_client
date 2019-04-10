@@ -20,6 +20,7 @@ function NavBar(props) {
 			}}
 		>
             <NavLink to="/">Home</NavLink>
+			<NavLink to="/habits/new">New Habit</NavLink>
 			<NavLink to="/habits">My Habits</NavLink>
 			{!currentUser && <NavLink to="/sign_in">Sign In</NavLink>}
 			{currentUser && (
