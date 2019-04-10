@@ -1,6 +1,10 @@
 import React from 'react';
+import FormErrors from "./FormErrors";
 
 function NewHabitForm(props) {
+
+    const { errors } = props;
+
     function handleSubmit(event){
         event.preventDefault();
 		const { currentTarget } = event;
@@ -17,8 +21,8 @@ function NewHabitForm(props) {
             frequency: fD.get('frequency'),
             number_of_days: fD.get('number_of_days'),
 		});
-		currentTarget.reset();
     }
+
 	return (
         <div class="card">
             <div class="card-header">
@@ -27,50 +31,54 @@ function NewHabitForm(props) {
             <div class="card-body">
                 <form className="NewHabitForm" onSubmit={handleSubmit}>
                     <div class="form-group field">
-                        <label htmlFor="name">Name</label>
-                        <br />
+                        <label htmlFor="name">Name</label><br />
+                        <FormErrors errors={errors} forField="name"/>
                         <input type="text" name="name" id="name" class="form-control" placeholder="Enter Name" />
                     </div>
                     <div class="form-group field">
-                        <label htmlFor="description">Description (optional)</label>
-                        <br />
+                        <label htmlFor="description">Description (optional)</label><br />
+                        <FormErrors errors={errors} forField="description"/>
                         <textarea name="description" id="description" class="form-control" placeholder="Enter Description" />
                     </div>
                     <div class="form-group field">
                         <label htmlFor="habit_type">Habit Type</label> <br />
+                        <FormErrors errors={errors} forField="habit_type"/>
                         <select name="habit_type" id="habit_type">
                             <option value="Binary">With Yes or No each day</option>
                             <option value="Number">With a threshold</option>
                         </select>
                     </div>
                     <div class="form-group field">
-                        <label htmlFor="threshold">Threshold</label>
-                        <br />
+                        <label htmlFor="threshold">Threshold</label><br />
+                        <FormErrors errors={errors} forField="threshold"/>
                         <input type="number" name="threshold" id="threshold" class="form-control" placeholder="Enter threshold" />
                     </div>
                     <div class="form-group field">
-                        <label htmlFor="unit">Unit</label>
-                        <br />
+                        <label htmlFor="unit">Unit</label><br />
+                        <FormErrors errors={errors} forField="unit"/>
                         <input type="text" name="unit" id="unit" class="form-control" placeholder="Enter unit" />
                     </div>
                     <div class="form-group field">
                         <label htmlFor="min_or_max">Minimum/Maxium</label> <br />
+                        <FormErrors errors={errors} forField="min_or_max"/>
                         <select name="min_or_max" id="min_or_max">
                             <option value="At least">At least</option>
                             <option value="At most">At most</option>
                         </select>
                     </div>
                     <div class="form-group field">
-                        <label htmlFor="target_streak">Target Streak (days)</label>
-                        <br />
+                        <label htmlFor="target_streak">Target Streak (days)</label><br />
+                        <FormErrors errors={errors} forField="target_streak"/>
                         <input type="number" name="target_streak" id="target_streak" class="form-control" placeholder="Enter target streak" />
                     </div>
                     <div class="form-group field">
-                        <label htmlFor="is_public">Do you want to challenge public with your habit?</label> 
-                        <input type="checkbox" name="is_public" id="is_public" value="1" /><br />
+                        <label htmlFor="is_public">Do you want to challenge public with your habit?</label><br />
+                        <FormErrors errors={errors} forField="is_public"/>
+                        <input type="checkbox" name="is_public" id="is_public" value="1" />
                     </div>
                     <div class="form-group field">
                         <label htmlFor="frequency">Frequency</label> <br />
+                        <FormErrors errors={errors} forField="frequency"/>
                         <select name="frequency" id="frequency">
                             <option value="Daily">Daily</option>
                             <option value="Weekly">Weekly</option>
@@ -79,8 +87,8 @@ function NewHabitForm(props) {
                         </select>
                     </div>
                     <div class="form-group field">
-                        <label htmlFor="number_of_days">Number of Days Per Period</label>
-                        <br />
+                        <label htmlFor="number_of_days">Number of Days Per Period</label><br />
+                        <FormErrors errors={errors} forField="number_of_days"/>
                         <input type="number" name="number_of_days" id="number_of_days" class="form-control" placeholder="Enter number of days" />
                     </div>
                     <div class="actions">
