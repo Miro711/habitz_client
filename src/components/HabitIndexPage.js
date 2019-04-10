@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Habit } from '../requests';
 
 class HabitIndexPage extends Component {
@@ -43,7 +44,7 @@ class HabitIndexPage extends Component {
                         habits.map(habit => (
                             <li key={habit.id}>    
                                 <p>
-                                    {habit.name}
+                                    <Link to={`/habits/${habit.id}`}>{habit.name}</Link>
                                     <br/>
                                     <small>Created {new Date(habit.created_at).toLocaleString()}</small>
                                 </p>

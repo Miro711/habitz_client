@@ -14,7 +14,7 @@ class HabitShowPage extends Component {
     }
 
     componentDidMount() {
-        Habit.one(1).then((habit) => {
+        Habit.one(this.props.match.params.id).then((habit) => {
             this.setState({
                 habit: habit,
                 isLoading: false,
