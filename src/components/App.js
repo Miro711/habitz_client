@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import AuthRoute from "./AuthRoute";
 import WelcomePage from './WelcomePage';
 import HabitShowPage from './HabitShowPage';
 import HabitIndexPage from './HabitIndexPage';
@@ -55,9 +56,9 @@ class App extends Component {
                     <NavBar currentUser={currentUser} onSignOut={this.signOut}/>
                     <Switch>
                         <Route path="/" exact component={WelcomePage} />
-                        <Route path="/habits/" exact component={HabitIndexPage} />
-                        <Route path="/habits/new" component={HabitNewPage} />
-                        <Route path="/habits/:id" component={HabitShowPage} />
+                        <AuthRoute isAllowed={currentUser} path="/habits/" exact component={HabitIndexPage} />
+                        <AuthRoute isAllowed={currentUser} path="/habits/new" component={HabitNewPage} />
+                        <AuthRoute isAllowed={currentUser} path="/habits/:id" component={HabitShowPage} />
                         <Route path="/sign_in" render={routeProps => (
                                 <SignInPage onSignIn={this.getUser} {...routeProps}/>
                             )} 
