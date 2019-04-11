@@ -9,6 +9,7 @@ import SignInPage from './SignInPage';
 import HabitNewPage from './HabitNewPage';
 import HabitEditPage from "./HabitEditPage";
 import PublicIndexPage from './PublicIndexPage';
+import SignUpPage from './SignUpPage';
 import { User, Session } from '../requests';
 
 class App extends Component {
@@ -65,6 +66,10 @@ class App extends Component {
                         <AuthRoute isAllowed={currentUser} path="/habits/:id" component={HabitShowPage} />
                         <Route path="/sign_in" render={routeProps => (
                                 <SignInPage onSignIn={this.getUser} {...routeProps}/>
+                            )} 
+                        />
+                        <Route path="/sign_up" render={routeProps => (
+                                <SignUpPage onSignUp={this.getUser} {...routeProps}/>
                             )} 
                         />
                     </Switch>

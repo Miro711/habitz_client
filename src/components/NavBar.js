@@ -23,7 +23,13 @@ function NavBar(props) {
 			<NavLink to="/habits/new">New Habit</NavLink>
 			<NavLink to="/habits">My Habits</NavLink>
 			<NavLink to="/habits/index_public">Public Habit Challenges</NavLink>
-			{!currentUser && <NavLink to="/sign_in">Sign In</NavLink>}
+			{!currentUser && (
+				<>
+					<NavLink to="/sign_in">Sign In</NavLink>
+					<NavLink to="/sign_up">Sign Up</NavLink>
+
+				</>
+			)}
 			{currentUser && (
 				<>
 					<span>{currentUser.full_name}</span>
