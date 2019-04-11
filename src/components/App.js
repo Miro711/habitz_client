@@ -7,6 +7,7 @@ import HabitIndexPage from './HabitIndexPage';
 import NavBar from './NavBar';
 import SignInPage from './SignInPage';
 import HabitNewPage from './HabitNewPage';
+import HabitEditPage from "./HabitEditPage";
 import { User, Session } from '../requests';
 
 class App extends Component {
@@ -58,6 +59,7 @@ class App extends Component {
                         <Route path="/" exact component={WelcomePage} />
                         <AuthRoute isAllowed={currentUser} path="/habits/" exact component={HabitIndexPage} />
                         <AuthRoute isAllowed={currentUser} path="/habits/new" component={HabitNewPage} />
+                        <AuthRoute isAllowed={currentUser} path="/habits/:id/edit" component={HabitEditPage} />
                         <AuthRoute isAllowed={currentUser} path="/habits/:id" component={HabitShowPage} />
                         <Route path="/sign_in" render={routeProps => (
                                 <SignInPage onSignIn={this.getUser} {...routeProps}/>

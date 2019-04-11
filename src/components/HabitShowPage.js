@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import HabitDetails from './HabitDetails';
 import TackledHabitList from './TackledHabitList';
 import NewTackledHabitForm from './NewTackledHabitForm';
@@ -66,7 +67,10 @@ class HabitShowPage extends Component {
         return(
             <main>
                 <HabitDetails {...habit}/>
-                <DeleteButton onDeleteClick={this.deleteHabit}/>
+                <div>
+                    <Link to={`/habits/${habit.id}/edit`}>Edit</Link>{" "}
+                    <DeleteButton onDeleteClick={this.deleteHabit}/>
+                </div>
                 <h2>Habit Checkins</h2>
                 <NewTackledHabitForm onSubmit={this.createTackledHabit} errors={errors}/>
                 <TackledHabitList tackled_habits={habit.tackled_habits} />

@@ -3,13 +3,13 @@ import FormErrors from "./FormErrors";
 
 function NewHabitForm(props) {
 
-    const { errors } = props;
+    const { onSubmit, errors, data = {} } = props;
 
     function handleSubmit(event){
         event.preventDefault();
 		const { currentTarget } = event;
         const fD = new FormData(currentTarget);
-        props.onSubmit({
+        onSubmit({
 			name: fD.get('name'),
             description: fD.get('description'),
             habit_type: fD.get('habit_type'),
@@ -33,12 +33,12 @@ function NewHabitForm(props) {
                     <div className="form-group field">
                         <label htmlFor="name">Name</label><br />
                         <FormErrors errors={errors} forField="name"/>
-                        <input type="text" name="name" id="name" className="form-control" placeholder="Enter Name" />
+                        <input type="text" name="name" id="name" defaultValue={data.name} className="form-control" placeholder="Enter Name" />
                     </div>
                     <div className="form-group field">
                         <label htmlFor="description">Description (optional)</label><br />
                         <FormErrors errors={errors} forField="description"/>
-                        <textarea name="description" id="description" className="form-control" placeholder="Enter Description" />
+                        <textarea name="description" id="description" defaultValue={data.description} className="form-control" placeholder="Enter Description" />
                     </div>
                     <div className="form-group field">
                         <label htmlFor="habit_type">Habit Type</label> <br />
@@ -51,12 +51,12 @@ function NewHabitForm(props) {
                     <div className="form-group field">
                         <label htmlFor="threshold">Threshold</label><br />
                         <FormErrors errors={errors} forField="threshold"/>
-                        <input type="number" name="threshold" id="threshold" className="form-control" placeholder="Enter threshold" />
+                        <input type="number" name="threshold" id="threshold" defaultValue={data.threshold} className="form-control" placeholder="Enter threshold" />
                     </div>
                     <div className="form-group field">
                         <label htmlFor="unit">Unit</label><br />
                         <FormErrors errors={errors} forField="unit"/>
-                        <input type="text" name="unit" id="unit" className="form-control" placeholder="Enter unit" />
+                        <input type="text" name="unit" id="unit" defaultValue={data.unit} className="form-control" placeholder="Enter unit" />
                     </div>
                     <div className="form-group field">
                         <label htmlFor="min_or_max">Minimum/Maxium</label> <br />
@@ -69,7 +69,7 @@ function NewHabitForm(props) {
                     <div className="form-group field">
                         <label htmlFor="target_streak">Target Streak (days)</label><br />
                         <FormErrors errors={errors} forField="target_streak"/>
-                        <input type="number" name="target_streak" id="target_streak" className="form-control" placeholder="Enter target streak" />
+                        <input type="number" name="target_streak" id="target_streak" defaultValue={data.target_streak} className="form-control" placeholder="Enter target streak" />
                     </div>
                     <div className="form-group field">
                         <label htmlFor="is_public">Do you want to challenge public with your habit?</label><br />
@@ -90,7 +90,7 @@ function NewHabitForm(props) {
                     <div className="form-group field">
                         <label htmlFor="number_of_days">Number of Days Per Period</label><br />
                         <FormErrors errors={errors} forField="number_of_days"/>
-                        <input type="number" name="number_of_days" id="number_of_days" className="form-control" placeholder="Enter number of days" />
+                        <input type="number" name="number_of_days" id="number_of_days" defaultValue={data.number_of_days} className="form-control" placeholder="Enter number of days" />
                     </div>
                     <div className="actions">
                         <input type="submit" value="Save Habit Profile" className="btn btn-primary" />
