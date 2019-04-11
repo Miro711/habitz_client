@@ -101,6 +101,11 @@ const TackledHabit = {
 		  method: "DELETE",
 		  credentials: "include",
 		}).then(res => res.json());
+	},
+	one(habit_id, id) {
+		return fetch(`${BASE_URL}/habits/${habit_id}/tackled_habits/${id}`, {
+			credentials: 'include',
+		}).then((res) => res.json());
 	}
 };
 

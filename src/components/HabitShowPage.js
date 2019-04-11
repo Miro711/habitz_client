@@ -29,7 +29,18 @@ class HabitShowPage extends Component {
             } else if (data.status === 401) {
                 this.props.history.push(`/sign_in`);
             } else {
-                window.location.reload()   
+                TackledHabit.one(this.props.match.params.id, data.id).then(tackled_habit => {
+                    let temp = {...this.state.habit};
+                    let index = this.state.habit.tackled_habits.findIndex(tackle => tackle.id === tackled_habit.id);
+                    if (index === -1) {
+                        temp.tackled_habits= this.state.habit.tackled_habits.concat([tackled_habit]);
+                        this.setState({habit: temp});
+                    } else {
+                        temp.tackled_habits = this.state.habit.tackled_habits;
+                        temp.tackled_habits[index] = tackled_habit;
+                        this.setState({habit: temp});
+                    }
+                });
             }
         });
     }
@@ -51,16 +62,16 @@ class HabitShowPage extends Component {
 
     deleteTackledHabit(tackleID) {
         TackledHabit.delete(this.props.match.params.id, tackleID).then(data => {
-            window.location.reload();
+            //window.location.reload();
+            this.setState((state) => {
+                return {
+                    habit: {
+                        ...state.habit,
+                        tackled_habits: state.habit.tackled_habits.filter((tackle)=>tackle.id !== tackleID),
+                    },
+                };
+            });
         });
-        // this.setState((state) => {
-        //     return {
-        //         habit: {
-        //             ...state.habit,
-        //             tackled_habits: state.habit.tackled_habits.filter((tackle)=>tackle.id !== tackleID),
-        //         },
-        //     };
-        // });
     }
 
     render(){
