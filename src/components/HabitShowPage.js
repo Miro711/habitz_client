@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import HabitDetails from './HabitDetails';
 import TackledHabitList from './TackledHabitList';
 import NewTackledHabitForm from './NewTackledHabitForm';
+import DeleteButton from './DeleteButton';
 import '../styles/page.css';
 import { Habit, TackledHabit } from '../requests';
 
@@ -14,6 +15,7 @@ class HabitShowPage extends Component {
             errors: [],
         }
         this.createTackledHabit = this.createTackledHabit.bind(this);
+        this.deleteHabit = this.deleteHabit.bind(this);
     }
 
     createTackledHabit(params){
@@ -27,6 +29,12 @@ class HabitShowPage extends Component {
             } else {
                 window.location.reload()   
             }
+        });
+    }
+
+    deleteHabit() {
+        Habit.delete(this.state.habit.id).then(data => {
+            this.props.history.push(`/habits`);
         });
     }
 
@@ -58,8 +66,9 @@ class HabitShowPage extends Component {
         return(
             <main>
                 <HabitDetails {...habit}/>
-                <NewTackledHabitForm onSubmit={this.createTackledHabit} errors={errors}/>
+                <DeleteButton onDeleteClick={this.deleteHabit}/>
                 <h2>Habit Checkins</h2>
+                <NewTackledHabitForm onSubmit={this.createTackledHabit} errors={errors}/>
                 <TackledHabitList tackled_habits={habit.tackled_habits} />
 
             </main>
