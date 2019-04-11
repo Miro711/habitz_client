@@ -1,4 +1,5 @@
 import React from 'react';
+import DeleteButton from './DeleteButton';
 import '../styles/TackledHabitDetails.css'
 
 function TackledHabitDetails(props) {
@@ -13,6 +14,7 @@ function TackledHabitDetails(props) {
             <p>
                 { props.checkins.map(x => x.checkin_value+" " ) }
             </p>
+            <DeleteButton onDeleteClick={() => props.onDeleteClick(props.id)}/>
         </div>
     );
 }

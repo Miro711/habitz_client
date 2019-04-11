@@ -90,6 +90,12 @@ const TackledHabit = {
 			},
 			body: JSON.stringify(params),
 		}).then((res) => res.json());
+	},
+	delete(habit_id, id) {
+		return fetch(`${BASE_URL}/habits/${habit_id}/tackled_habits/${id}`, {
+		  method: "DELETE",
+		  credentials: "include",
+		}).then(res => res.json());
 	}
 };
 

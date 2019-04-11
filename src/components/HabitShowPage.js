@@ -17,6 +17,7 @@ class HabitShowPage extends Component {
         }
         this.createTackledHabit = this.createTackledHabit.bind(this);
         this.deleteHabit = this.deleteHabit.bind(this);
+        this.deleteTackledHabit = this.deleteTackledHabit.bind(this);
     }
 
     createTackledHabit(params){
@@ -48,6 +49,20 @@ class HabitShowPage extends Component {
         });
     }
 
+    deleteTackledHabit(tackleID) {
+        TackledHabit.delete(this.props.match.params.id, tackleID).then(data => {
+            window.location.reload();
+        });
+        // this.setState((state) => {
+        //     return {
+        //         habit: {
+        //             ...state.habit,
+        //             tackled_habits: state.habit.tackled_habits.filter((tackle)=>tackle.id !== tackleID),
+        //         },
+        //     };
+        // });
+    }
+
     render(){
         const { habit, isLoading, errors } = this.state;
         if (isLoading) {
@@ -73,7 +88,7 @@ class HabitShowPage extends Component {
                 </div>
                 <h2>Habit Checkins</h2>
                 <NewTackledHabitForm onSubmit={this.createTackledHabit} errors={errors}/>
-                <TackledHabitList tackled_habits={habit.tackled_habits} />
+                <TackledHabitList tackled_habits={habit.tackled_habits} onTackledHabitDeleteClick={this.deleteTackledHabit}/>
 
             </main>
         );
