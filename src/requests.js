@@ -45,6 +45,11 @@ const Habit = {
 		  method: "DELETE",
 		  credentials: "include",
 		}).then(res => res.json());
+	},
+	public() {
+		return fetch(`${BASE_URL}/habits/index_public`, { credentials: 'include' }).then(
+			(res) => res.json(),
+		);
 	}
 };
 

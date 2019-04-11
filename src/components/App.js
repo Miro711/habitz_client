@@ -8,6 +8,7 @@ import NavBar from './NavBar';
 import SignInPage from './SignInPage';
 import HabitNewPage from './HabitNewPage';
 import HabitEditPage from "./HabitEditPage";
+import PublicIndexPage from './PublicIndexPage';
 import { User, Session } from '../requests';
 
 class App extends Component {
@@ -58,6 +59,7 @@ class App extends Component {
                     <Switch>
                         <Route path="/" exact component={WelcomePage} />
                         <AuthRoute isAllowed={currentUser} path="/habits/" exact component={HabitIndexPage} />
+                        <Route path="/habits/index_public" component={PublicIndexPage} />
                         <AuthRoute isAllowed={currentUser} path="/habits/new" component={HabitNewPage} />
                         <AuthRoute isAllowed={currentUser} path="/habits/:id/edit" component={HabitEditPage} />
                         <AuthRoute isAllowed={currentUser} path="/habits/:id" component={HabitShowPage} />
