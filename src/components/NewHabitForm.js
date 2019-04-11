@@ -24,23 +24,23 @@ function NewHabitForm(props) {
     }
 
 	return (
-        <div class="card">
-            <div class="card-header">
+        <div className="card">
+            <div className="card-header">
                 <h1>New Habit Profile</h1>
             </div>
-            <div class="card-body">
+            <div className="card-body">
                 <form className="NewHabitForm" onSubmit={handleSubmit}>
-                    <div class="form-group field">
+                    <div className="form-group field">
                         <label htmlFor="name">Name</label><br />
                         <FormErrors errors={errors} forField="name"/>
-                        <input type="text" name="name" id="name" class="form-control" placeholder="Enter Name" />
+                        <input type="text" name="name" id="name" className="form-control" placeholder="Enter Name" />
                     </div>
-                    <div class="form-group field">
+                    <div className="form-group field">
                         <label htmlFor="description">Description (optional)</label><br />
                         <FormErrors errors={errors} forField="description"/>
-                        <textarea name="description" id="description" class="form-control" placeholder="Enter Description" />
+                        <textarea name="description" id="description" className="form-control" placeholder="Enter Description" />
                     </div>
-                    <div class="form-group field">
+                    <div className="form-group field">
                         <label htmlFor="habit_type">Habit Type</label> <br />
                         <FormErrors errors={errors} forField="habit_type"/>
                         <select name="habit_type" id="habit_type">
@@ -48,17 +48,17 @@ function NewHabitForm(props) {
                             <option value="Number">With a threshold</option>
                         </select>
                     </div>
-                    <div class="form-group field">
+                    <div className="form-group field">
                         <label htmlFor="threshold">Threshold</label><br />
                         <FormErrors errors={errors} forField="threshold"/>
-                        <input type="number" name="threshold" id="threshold" class="form-control" placeholder="Enter threshold" />
+                        <input type="number" name="threshold" id="threshold" className="form-control" placeholder="Enter threshold" />
                     </div>
-                    <div class="form-group field">
+                    <div className="form-group field">
                         <label htmlFor="unit">Unit</label><br />
                         <FormErrors errors={errors} forField="unit"/>
-                        <input type="text" name="unit" id="unit" class="form-control" placeholder="Enter unit" />
+                        <input type="text" name="unit" id="unit" className="form-control" placeholder="Enter unit" />
                     </div>
-                    <div class="form-group field">
+                    <div className="form-group field">
                         <label htmlFor="min_or_max">Minimum/Maxium</label> <br />
                         <FormErrors errors={errors} forField="min_or_max"/>
                         <select name="min_or_max" id="min_or_max">
@@ -66,17 +66,18 @@ function NewHabitForm(props) {
                             <option value="At most">At most</option>
                         </select>
                     </div>
-                    <div class="form-group field">
+                    <div className="form-group field">
                         <label htmlFor="target_streak">Target Streak (days)</label><br />
                         <FormErrors errors={errors} forField="target_streak"/>
-                        <input type="number" name="target_streak" id="target_streak" class="form-control" placeholder="Enter target streak" />
+                        <input type="number" name="target_streak" id="target_streak" className="form-control" placeholder="Enter target streak" />
                     </div>
-                    <div class="form-group field">
+                    <div className="form-group field">
                         <label htmlFor="is_public">Do you want to challenge public with your habit?</label><br />
                         <FormErrors errors={errors} forField="is_public"/>
-                        <input type="checkbox" name="is_public" id="is_public" value="1" />
+                        <input type="checkbox" name="is_public" id="is_public" value="true" />
+                        <input type="hidden" name="is_public" id="is_public" value="false" />
                     </div>
-                    <div class="form-group field">
+                    <div className="form-group field">
                         <label htmlFor="frequency">Frequency</label> <br />
                         <FormErrors errors={errors} forField="frequency"/>
                         <select name="frequency" id="frequency">
@@ -86,13 +87,13 @@ function NewHabitForm(props) {
                             <option value="Yearly">Yearly</option>
                         </select>
                     </div>
-                    <div class="form-group field">
+                    <div className="form-group field">
                         <label htmlFor="number_of_days">Number of Days Per Period</label><br />
                         <FormErrors errors={errors} forField="number_of_days"/>
-                        <input type="number" name="number_of_days" id="number_of_days" class="form-control" placeholder="Enter number of days" />
+                        <input type="number" name="number_of_days" id="number_of_days" className="form-control" placeholder="Enter number of days" />
                     </div>
-                    <div class="actions">
-                        <input type="submit" value="Save Habit Profile" class="btn btn-primary" />
+                    <div className="actions">
+                        <input type="submit" value="Save Habit Profile" className="btn btn-primary" />
                     </div>
                 </form>
             </div>

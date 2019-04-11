@@ -5,13 +5,13 @@ function TackledHabitDetails(props) {
     return (
         <div className="TackledHabitDetails">
             <p> 
-                { props.user.full_name || 'DELETED' } started tackling habit on {new Date(props.created_at).toLocaleString()} }
+                { props.user.full_name || 'DELETED' } started tackling habit on {new Date(props.created_at).toLocaleString()} 
             </p>
             <p>
-                { props.checkins.map(x => new Date(x["checkin_date"]) ) }
+                { props.checkins.map(x => x.checkin_date+" " ) }
             </p>
             <p>
-                { props.checkins.map(x => x["checkin_value"] ) }
+                { props.checkins.map(x => x.checkin_value+" " ) }
             </p>
         </div>
     );

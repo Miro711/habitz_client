@@ -10,7 +10,7 @@ function HabitDetails(props) {
             <p><strong>Unit: </strong>{ props.unit }</p>
             <p><strong>Min or max: </strong>{ props.min_or_max }</p>
             <p><strong>Target streak: </strong>{ props.target_streak }</p>
-            <p><strong>Is public: </strong>{ props.is_public }</p>
+            <p><strong>Is public: </strong>{ props.is_public.toString().charAt(0).toUpperCase() + props.is_public.toString().slice(1) }</p>
             <p><strong>Frequency: </strong>{ props.frequency }</p>
             <p><strong>Number of days: </strong>{ props.number_of_days }</p>
             <small>Created by: { props.habit_owner.full_name || 'DELETED' }</small>

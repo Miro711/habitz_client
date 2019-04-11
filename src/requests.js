@@ -80,4 +80,17 @@ const User = {
 	}
 };
 
-export { Habit, Session, User };
+const TackledHabit = {
+	create(habit_id, params) {
+		return fetch(`${BASE_URL}/habits/${habit_id}/tackled_habits`, {
+			method: 'POST',
+			credentials: 'include',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(params),
+		}).then((res) => res.json());
+	}
+};
+
+export { Habit, TackledHabit, Session, User };

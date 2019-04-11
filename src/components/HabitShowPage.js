@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import HabitDetails from './HabitDetails';
 import TackledHabitList from './TackledHabitList';
+import NewTackledHabitForm from './NewTackledHabitForm';
 import '../styles/page.css';
-import { Habit } from '../requests';
+import { Habit, TackledHabit } from '../requests';
 
 class HabitShowPage extends Component {
     constructor(props){
@@ -10,7 +11,23 @@ class HabitShowPage extends Component {
         this.state = {
             habit: null,
             isLoading: true,
+            errors: [],
         }
+        this.createTackledHabit = this.createTackledHabit.bind(this);
+    }
+
+    createTackledHabit(params){
+        TackledHabit.create(this.props.match.params.id, params).then(data => {
+            if (data.errors) {
+                this.setState({
+                    errors: data.errors
+                });
+            } else if (data.status === 401) {
+                this.props.history.push(`/sign_in`);
+            } else {
+                window.location.reload()   
+            }
+        });
     }
 
     componentDidMount() {
@@ -23,7 +40,7 @@ class HabitShowPage extends Component {
     }
 
     render(){
-        const { habit, isLoading } = this.state;
+        const { habit, isLoading, errors } = this.state;
         if (isLoading) {
 			return (
 				<main>
@@ -41,7 +58,8 @@ class HabitShowPage extends Component {
         return(
             <main>
                 <HabitDetails {...habit}/>
-                <h2>Checkins</h2>
+                <NewTackledHabitForm onSubmit={this.createTackledHabit} errors={errors}/>
+                <h2>Habit Checkins</h2>
                 <TackledHabitList tackled_habits={habit.tackled_habits} />
 
             </main>

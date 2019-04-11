@@ -15,7 +15,7 @@ function TackledHabitList(props) {
                 </li>
             ))
         }
-    </ul>
+        </ul>
     );
 }
 
