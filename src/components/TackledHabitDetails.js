@@ -14,6 +14,9 @@ function TackledHabitDetails(props) {
             <p>
                 { props.checkins.map(x => x.checkin_value+" " ) }
             </p>
+            <p>
+                Current Streak: {props.current_streak}
+            </p>
             <DeleteButton onDeleteClick={() => props.onDeleteClick(props.id)}/>
         </div>
     );

@@ -13,6 +13,7 @@ function TackledHabitList(props) {
                         user={tackled_habit.habit_tackler}
                         created_at={new Date(tackled_habit.created_at)}
                         onDeleteClick={(id) => props.onTackledHabitDeleteClick(id)}
+                        current_streak={tackled_habit.current_streak}
                     />
                 </li>
             ))
