@@ -40,9 +40,9 @@ function NavBar(props) {
 					</li>
 					{currentUser && (
 						<>
-							<span className="navbar-item mx-3">{currentUser.full_name}</span>
+							<span className="navbar-item mx-3 font-weight-bold text-white">Hello, {currentUser.full_name}</span>
 							<li className="nav-item mx-3">
-								<a href="#boo" onClick={handleSignOutClick}>Sign Out</a>
+								<a href="#boo" onClick={handleSignOutClick} className="btn btn-success font-weight-bold">Sign Out</a>
 							</li>
 						</>
 					)}
