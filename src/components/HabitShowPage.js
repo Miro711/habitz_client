@@ -92,13 +92,21 @@ class HabitShowPage extends Component {
         }
         return(
             <main>
-                <HabitDetails {...habit}/>
-                <div>
-                    <Link to={`/habits/${habit.id}/edit`}>Edit</Link>{" "}
-                    <DeleteButton onDeleteClick={this.deleteHabit}/>
+                <div className="card mx-4 mb-5">
+                    <div className="card-header">
+                        <h1 className="text-uppercase text-success"> {habit.name} </h1>
+                    </div>
+                    <div className="card-body">
+                        <HabitDetails {...habit}/>
+                    </div>
+                    <div className="card-footer">
+                        <Link to={`/habits/${habit.id}/edit`} className="btn btn-success font-weight-bold">Edit</Link>{" "}
+                        <DeleteButton onDeleteClick={this.deleteHabit} />
+                    </div>
                 </div>
-                <h2>Habit Checkins</h2>
+
                 <NewTackledHabitForm onSubmit={this.createTackledHabit} errors={errors}/>
+
                 <TackledHabitList tackled_habits={habit.tackled_habits} onTackledHabitDeleteClick={this.deleteTackledHabit}/>
 
             </main>

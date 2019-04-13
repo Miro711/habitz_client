@@ -51,14 +51,20 @@ class HabitEditPage extends Component {
         }
 
         return (
-            <main>
-              <h1>Edit Habit</h1>
-              <NewHabitForm
-                data={habit}
-                errors={errors}
-                onSubmit={this.updateHabit}
-              />
-            </main>
+          <main>
+                <div className="card mx-4 my-4">
+                    <div className="card-header bg-light">
+                        <h1 className="text-success text-uppercase">Edit Habit Profile</h1>
+                    </div>
+                    <div className="card-body">
+                      <NewHabitForm
+                        data={habit}
+                        errors={errors}
+                        onSubmit={this.updateHabit}
+                      />
+                    </div>
+                </div>
+          </main>
         );
     }
 }

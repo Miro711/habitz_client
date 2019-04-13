@@ -50,6 +50,7 @@ class PublicIndexPage extends Component {
                                         </div>
                                         <div className="card-body">
                                             <p>
+                                                <strong> Description:</strong> { habit.description } <br />
                                                 <strong> Goal: </strong> { habit.habit_type === 'Binary' ? 'Simple Yes/No per Day' : `${habit.min_or_max} ${habit.threshold} ${habit.unit}(s)/day` } <br />
                                                 <strong> Target Streak (days):</strong> { habit.target_streak } <br />
                                                 <strong> Created by:</strong> { habit.habit_owner.full_name || 'DELETED' } <br />
