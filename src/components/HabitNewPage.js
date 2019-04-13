@@ -28,8 +28,14 @@ class HabitNewPage extends Component {
         const { errors = [] } = this.state;
         return(
             <main>
-                <h1>Create a Habit</h1>
-                <NewHabitForm onSubmit={this.createHabit} errors={errors} />
+                <div class="card mx-4 my-4">
+                    <div class="card-header">
+                        <h1>Create a New Habit Profile</h1>
+                    </div>
+                    <div class="card-body">
+                        <NewHabitForm onSubmit={this.createHabit} errors={errors} />
+                    </div>
+                </div>
             </main>
         );
     }

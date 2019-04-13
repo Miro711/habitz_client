@@ -20,7 +20,7 @@ function FormErrors(props) {
             {
                 filteredErrors.map((error, i) => (
                     <li key={i}>
-                        {error.field} {error.message}
+                        {error.message}
                     </li>
                 ))
             }

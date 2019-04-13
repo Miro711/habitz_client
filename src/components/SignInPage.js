@@ -35,22 +35,22 @@ class SignInPage extends Component {
         const { errors } = this.state;
         return(
             <main>
-                <h1>Sign In</h1>
-                <form onSubmit={this.createSession}>
+                <h1 className="mx-3">Sign In</h1>
+                <form onSubmit={this.createSession} className="mx-3 my-2 p-1 clearfix">
                     {errors.length > 0 ? (
                         <div className="FormErrors">
                             {errors.map(e => e.message).join(", ")}
                         </div>
                     ) : null}
-                    <div>
+                    <div className="form-group">
                         <label htmlFor="email">Email</label> <br />
-                        <input type="email" name="email" id="email" />
+                        <input type="email" name="email" id="email" className="form-control" placeholder="name@example.com" />
                     </div>
-                    <div>
+                    <div className="form-group">
                         <label htmlFor="password">Password</label> <br />
-                        <input type="password" name="password" id="password" />
+                        <input type="password" name="password" id="password" className="form-control" placeholder="Password" />
                     </div>
-                    <input type="submit" value="Sign In" />
+                    <input type="submit" value="Sign In" className="btn btn-primary float-right" />
                 </form>
             </main>
         );
