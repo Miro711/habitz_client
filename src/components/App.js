@@ -55,8 +55,8 @@ class App extends Component {
 
         return (
             <BrowserRouter>
-                <div>
-                    <NavBar currentUser={currentUser} onSignOut={this.signOut}/>
+                <NavBar currentUser={currentUser} onSignOut={this.signOut}/>
+                <div className="pt-5 pb-5">
                     <Switch>
                         <Route path="/" exact component={WelcomePage} />
                         <AuthRoute isAllowed={currentUser} path="/habits/" exact component={HabitIndexPage} />

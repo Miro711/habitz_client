@@ -17,7 +17,7 @@ function NavBar(props) {
 	}
 
 	return (
-		<nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-2">
+		<nav className="navbar navbar-expand-sm navbar-dark bg-dark">
 			<NavLink className="navbar-brand text-success font-weight-bold" to="/">
 				Habitz <FontAwesomeIcon icon={faUserCog} />
 			</NavLink>

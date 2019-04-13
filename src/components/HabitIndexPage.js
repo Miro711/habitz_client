@@ -38,20 +38,38 @@ class HabitIndexPage extends Component {
         }
         return(
             <main>
-                <h1>My Habits</h1>
-                <ul className="no-bullets">
-                    {
-                        habits.map(habit => (
-                            <li key={habit.id}>    
-                                <p>
-                                    <Link to={`/habits/${habit.id}`}>{habit.name}</Link>
-                                    <br/>
-                                    <small>Created {new Date(habit.created_at).toLocaleString()}</small>
-                                </p>
-                            </li>
-                        ))
-                    }    
-                </ul>
+                <h1 className="mx-5 text-uppercase text-success">My Habits</h1>
+                <div className="container-fluid">
+                    <div className="row mx-4">
+                        {
+                            habits.map(habit => (
+                                <div key={habit.id} className="col-4 my-4">
+                                    <div className="card">
+                                        <div className="card-header">
+                                            <strong><h2><Link to={`/habits/${habit.id}`} className="text-dark text-capitalize">{habit.name}</Link></h2></strong>
+                                        </div>
+                                        <div className="card-body">
+                                            <p>
+                                                <strong> Goal: </strong> { habit.habit_type === 'Binary' ? 'Simple Yes/No per Day' : `${habit.min_or_max} ${habit.threshold} ${habit.unit}(s)/day` } <br />
+                                                <strong> Target Streak (days):</strong> { habit.target_streak } <br />
+                                                <strong> Created by:</strong> { habit.habit_owner.full_name || 'DELETED' } <br />
+                                            </p>
+                                            <div className="progress">
+                                                <div className="progress-bar" role="progressbar" style={{width: `${habit.threshold}%`}} aria-valuenow={habit.threshold} aria-valuemin="0" aria-valuemax={habit.target_streak}>
+                                                    {habit.threshold} Wins
+                                                </div>
+                                            </div>
+                                            <small>Created {new Date(habit.created_at).toLocaleString()}</small>
+                                        </div>
+                                        <div className="card-footer">
+                                            <Link to={`/habits/${habit.id}`} className="btn btn-success font-weight-bold">Tackle Habit</Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        }  
+                    </div>
+                </div>     
             </main>
         );
     }

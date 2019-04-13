@@ -69,7 +69,7 @@ class SignUpPage extends Component {
                         <FormErrors errors={errors} forField="password_confirmation"/>
                         <input type="password" name="password_confirmation" id="password_confirmation" className="form-control" placeholder="Confirm Password"  />
                     </div>
-                    <input type="submit" value="Sign Up" className="btn btn-primary float-right" />
+                    <input type="submit" value="Sign Up" className="btn btn-success float-right" />
                 </form>
             </main>
         );

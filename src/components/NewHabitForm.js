@@ -91,7 +91,7 @@ function NewHabitForm(props) {
                 <input type="number" name="number_of_days" id="number_of_days" defaultValue={data.number_of_days} className="form-control" placeholder="Enter number of days" />
             </div>
             <div className="actions">
-                <input type="submit" value="Save Habit Profile" className="btn btn-primary float-right" />
+                <input type="submit" value="Save Habit Profile" className="btn btn-success font-weight-bold float-right" />
             </div>
         </form>
             

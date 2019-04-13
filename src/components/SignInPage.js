@@ -50,7 +50,7 @@ class SignInPage extends Component {
                         <label htmlFor="password">Password</label> <br />
                         <input type="password" name="password" id="password" className="form-control" placeholder="Password" />
                     </div>
-                    <input type="submit" value="Sign In" className="btn btn-primary float-right" />
+                    <input type="submit" value="Sign In" className="btn btn-success float-right" />
                 </form>
             </main>
         );
