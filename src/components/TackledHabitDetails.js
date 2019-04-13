@@ -9,10 +9,13 @@ function TackledHabitDetails(props) {
                 { props.user.full_name || 'DELETED' } started tackling habit on {new Date(props.created_at).toLocaleString()} 
             </p>
             <p>
-                { props.checkins.map(x => x.checkin_date+" " ) }
+                { props.checkins.map(x => x.checkin_date+", " ) }
             </p>
             <p>
-                { props.checkins.map(x => x.checkin_value+" " ) }
+                { props.checkins.map(x => x.checkin_value+", " ) }
+            </p>
+            <p>
+                { props.checkins.map(x => x.is_win+", " ) }
             </p>
             <p>
                 Current Streak: {props.current_streak}
