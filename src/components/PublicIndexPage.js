@@ -38,7 +38,7 @@ class PublicIndexPage extends Component {
         }
         return(
             <main>
-                <h1 className="mx-5 text-uppercase">Public Habit Challenges</h1>
+                <h1 className="mx-5 text-success text-uppercase">Public Habit Challenges</h1>
                 <div className="container-fluid">
                     <div className="row mx-4">
                         {
@@ -46,7 +46,7 @@ class PublicIndexPage extends Component {
                                 <div key={habit.id} className="col-4 my-4">
                                     <div className="card">
                                         <div className="card-header">
-                                            <strong><h2><Link to={`/habits/${habit.id}`} className="text-success text-capitalize">{habit.name}</Link></h2></strong>
+                                            <strong><h2><Link to={`/habits/${habit.id}`} className="text-dark text-capitalize">{habit.name}</Link></h2></strong>
                                         </div>
                                         <div className="card-body">
                                             <p>
