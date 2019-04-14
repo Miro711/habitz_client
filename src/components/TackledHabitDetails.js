@@ -29,8 +29,9 @@ function TackledHabitDetails(props) {
             <div className="card-header">
                 <p>
                     <h3>{props.user.full_name || 'DELETED'} </h3>
-                    <small>Started tackling habit on {new Date(start_date.getFullYear(),start_date.getMonth() , start_date.getDate())
-.toDateString()}</small>
+                    <small>
+                        Started tackling habit on {new Date(start_date.getFullYear(),start_date.getMonth(),start_date.getDate()).toDateString()}
+                    </small>
                 </p>
                 <div className="progress">
                     <div className="progress-bar" role="progressbar" style={{width: `${success_rate}%`}} aria-valuenow={success_rate} aria-valuemin="0" aria-valuemax="100">

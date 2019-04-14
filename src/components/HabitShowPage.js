@@ -14,6 +14,7 @@ class HabitShowPage extends Component {
             habit: null,
             isLoading: true,
             errors: [],
+            alerts:[],
         }
         this.createTackledHabit = this.createTackledHabit.bind(this);
         this.deleteHabit = this.deleteHabit.bind(this);
@@ -47,7 +48,13 @@ class HabitShowPage extends Component {
 
     deleteHabit() {
         Habit.delete(this.state.habit.id).then(data => {
-            this.props.history.push(`/habits`);
+            if (data.status === 403) {
+                this.setState({
+                    alerts: [{message: "Access Forbidden"}]
+                });
+            } else {
+                this.props.history.push(`/habits`);
+            }
         });
     }
 
@@ -62,20 +69,25 @@ class HabitShowPage extends Component {
 
     deleteTackledHabit(tackleID) {
         TackledHabit.delete(this.props.match.params.id, tackleID).then(data => {
-            //window.location.reload();
-            this.setState((state) => {
-                return {
-                    habit: {
-                        ...state.habit,
-                        tackled_habits: state.habit.tackled_habits.filter((tackle)=>tackle.id !== tackleID),
-                    },
-                };
-            });
+            if (data.status === 403) {
+                this.setState({
+                    alerts: [{message: "Access Forbidden"}]
+                });
+            } else if (data.status === 200) {
+                this.setState((state) => {
+                    return {
+                        habit: {
+                            ...state.habit,
+                            tackled_habits: state.habit.tackled_habits.filter((tackle)=>tackle.id !== tackleID),
+                        },
+                    };
+                });
+            }
         });
     }
 
     render(){
-        const { habit, isLoading, errors } = this.state;
+        const { habit, isLoading, errors, alerts } = this.state;
         if (isLoading) {
 			return (
 				<main>
@@ -92,6 +104,11 @@ class HabitShowPage extends Component {
         }
         return(
             <main>
+                {alerts.length > 0 ? (
+                    <div className="FormErrors">
+                        {alerts.map(e => e.message).join(", ")}
+                    </div>
+                ) : null}
                 <div className="card mx-4 mb-5">
                     <div className="card-header">
                         <h1 className="text-uppercase text-success"> {habit.name} </h1>
