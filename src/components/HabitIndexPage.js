@@ -55,11 +55,11 @@ class HabitIndexPage extends Component {
                                                 <strong> Target Streak (days):</strong> { habit.target_streak } <br />
                                                 <strong> Created by:</strong> { habit.habit_owner.full_name || 'DELETED' } <br />
                                             </p>
-                                            <div className="progress">
+                                            {/* <div className="progress">
                                                 <div className="progress-bar" role="progressbar" style={{width: `${habit.threshold}%`}} aria-valuenow={habit.threshold} aria-valuemin="0" aria-valuemax={habit.target_streak}>
                                                     {habit.threshold} Wins
                                                 </div>
-                                            </div>
+                                            </div> */}
                                             <small>Created {new Date(habit.created_at).toLocaleString()}</small>
                                         </div>
                                         <div className="card-footer">
