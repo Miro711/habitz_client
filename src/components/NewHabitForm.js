@@ -27,7 +27,7 @@ function NewHabitForm(props) {
         
         <form className="NewHabitForm mx-3 my-2 p-1 clearfix" onSubmit={handleSubmit}>
             <div className="form-group">
-                <label htmlFor="name">Name</label><br />
+                <label htmlFor="name">Title</label><br />
                 <FormErrors errors={errors} forField="name"/>
                 <input type="text" name="name" id="name" defaultValue={data.name} className="form-control" placeholder="Enter Name" />
             </div>

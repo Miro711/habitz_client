@@ -3,22 +3,34 @@ import DeleteButton from './DeleteButton';
 import '../styles/TackledHabitDetails.css'
 
 function TackledHabitDetails(props) {
-    let date_today = new Date(new Date().getFullYear(),new Date().getMonth() , new Date().getDate());
 
-    let date_first = new Date(`${props.checkins[props.checkins.length-1].checkin_date}`+' (PT)');
-    // date_first.setHours(0,0,0,0);
+    let start_date;
+    let first_checkin_date;
+    let created_date = new Date(`${props.created_at}`+' (PT)');
+    created_date.setHours(0,0,0,0);
+    if (props.checkins.length === 0) {
+        start_date = created_date;
+    } else {
+        first_checkin_date = new Date(`${props.checkins[props.checkins.length-1].checkin_date}`+' (PT)');
+        if (first_checkin_date <= created_date) {
+            start_date = first_checkin_date;
+        } else if (first_checkin_date > created_date) {
+            start_date = created_date;
+        }
+    }
 
-    let total_days = 1 + (date_today.getTime() - date_first.getTime())/1000/60/60/24;
+    let today_date = new Date(new Date().getFullYear(),new Date().getMonth() , new Date().getDate());
+    let total_days = 1 + (today_date.getTime() - start_date.getTime())/1000/60/60/24;
     let losses = total_days - props.wins;
     let success_rate = props.wins / total_days * 100;
-
     
     return (
         <>
             <div className="card-header">
                 <p>
                     <h3>{props.user.full_name || 'DELETED'} </h3>
-                    <small>Started tackling habit on {new Date(props.created_at).toLocaleString()}</small>
+                    <small>Started tackling habit on {new Date(start_date.getFullYear(),start_date.getMonth() , start_date.getDate())
+.toDateString()}</small>
                 </p>
                 <div className="progress">
                     <div className="progress-bar" role="progressbar" style={{width: `${success_rate}%`}} aria-valuenow={success_rate} aria-valuemin="0" aria-valuemax="100">
