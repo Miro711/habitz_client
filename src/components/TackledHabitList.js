@@ -2,6 +2,11 @@ import React from 'react';
 import TackledHabitDetails from './TackledHabitDetails';
 
 function TackledHabitList(props) {    
+    if (props.tackled_habits.length === 0) {
+        return (
+            <h1 className="mx-3">Check in your first date to kickstart the habit!</h1>
+        );
+    }
     return(
         <>
             <div className="card mx-4">
@@ -19,6 +24,7 @@ function TackledHabitList(props) {
                                     created_at={new Date(tackled_habit.created_at)}
                                     onDeleteClick={(id) => props.onTackledHabitDeleteClick(id)}
                                     current_streak={tackled_habit.current_streak}
+                                    wins={tackled_habit.wins}
                                 />
                             </div>
                         ))

@@ -75,7 +75,7 @@ function NewHabitForm(props) {
                 <input type="hidden" name="is_public" id="is_public" value="false" />
                 <label htmlFor="is_public" className="form-check-label">Do you want to challenge public with your habit?</label>
             </div>
-            <div className="form-group">
+            {/* <div className="form-group">
                 <label htmlFor="frequency">Frequency</label> <br />
                 <FormErrors errors={errors} forField="frequency"/>
                 <select name="frequency" id="frequency" className="form-control">
@@ -89,7 +89,7 @@ function NewHabitForm(props) {
                 <label htmlFor="number_of_days">Number of Days Per Period</label><br />
                 <FormErrors errors={errors} forField="number_of_days"/>
                 <input type="number" name="number_of_days" id="number_of_days" defaultValue={data.number_of_days} className="form-control" placeholder="Enter number of days" />
-            </div>
+            </div> */}
             <div className="actions">
                 <input type="submit" value="Save Habit Profile" className="btn btn-success font-weight-bold float-right" />
             </div>

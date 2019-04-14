@@ -29,6 +29,9 @@ function TackledHabitDetails(props) {
                 <p>
                     Current Streak: {props.current_streak}
                 </p>
+                <p>
+                    Wins: {props.wins}
+                </p>
             </div>
             <div className="card-footer">
                 <DeleteButton onDeleteClick={() => props.onDeleteClick(props.id)} />
