@@ -2,6 +2,9 @@ import React from 'react';
 import DeleteButton from './DeleteButton';
 import '../styles/TackledHabitDetails.css'
 
+import DayPicker from 'react-day-picker';
+import 'react-day-picker/lib/style.css';
+
 function TackledHabitDetails(props) {
 
     let start_date;
@@ -23,6 +26,28 @@ function TackledHabitDetails(props) {
     let total_days = 1 + (today_date.getTime() - start_date.getTime())/1000/60/60/24;
     let losses = total_days - props.wins;
     let success_rate = props.wins / total_days * 100;
+
+    let hit_checkins_array = props.checkins.filter(checkin => checkin.is_win === true);
+    let miss_checkins_array = props.checkins.filter(checkin => checkin.is_win === false);
+
+    let hit_dates_array = hit_checkins_array.map(checkin => new Date(`${checkin.checkin_date}`+' (PT)'));
+    let miss_dates_array = miss_checkins_array.map(checkin => new Date(`${checkin.checkin_date}`+' (PT)'));
+
+    const modifiers = {
+        miss_checkins: miss_dates_array,
+        hit_checkins: hit_dates_array,
+    };
+
+    const modifiersStyles = {
+        miss_checkins: {
+          color: 'white',
+          backgroundColor: 'red',
+        },
+        hit_checkins: {
+          color: 'white',
+          backgroundColor: 'green',
+        },
+    };
     
     return (
         <>
@@ -60,6 +85,14 @@ function TackledHabitDetails(props) {
                     {props.checkins.map(x => x.checkin_value + ", ")}<br/>
                     {props.checkins.map(x => x.is_win + ", ")}
                 </p>
+                <DayPicker
+                    todayButton="Go to Today"
+                    numberOfMonths={Math.ceil(props.target_streak/30)}
+                    initialMonth={new Date(new Date().getFullYear(),new Date().getMonth())}
+                    // selectedDays={hit_dates_array}
+                    modifiers={modifiers}
+                    modifiersStyles={modifiersStyles}
+                />
             </div>
             <div className="card-footer">
                 <DeleteButton onDeleteClick={() => props.onDeleteClick(props.id)} />
