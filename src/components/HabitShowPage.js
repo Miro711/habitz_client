@@ -107,7 +107,7 @@ class HabitShowPage extends Component {
 
                 <NewTackledHabitForm onSubmit={this.createTackledHabit} errors={errors}/>
 
-                <TackledHabitList tackled_habits={habit.tackled_habits} onTackledHabitDeleteClick={this.deleteTackledHabit}/>
+                <TackledHabitList habit={habit} onTackledHabitDeleteClick={this.deleteTackledHabit}/>
 
             </main>
         );
