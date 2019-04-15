@@ -30,24 +30,27 @@ main {
   padding: 0px;
 }
 
-.js-object-log{
+.bucket{
   height: 450px;
 }
 
-.landing-page-div-1 {
+.homepage-intro {
   text-align: center;
   justify-content: center;
   padding: 20px;
   margin-top: 120px;
 }
 
-.display-4, .moto {
+.brand-name, .moto {
   color: black;
+  font-weight: bold;
+  font-size: xx-large;
   font-family: Georgia, Times, 'Times New Roman', serif;
 }
 
 .video-background {
   /* justify-content: center; */
+  opacity: 0.75;
   position: fixed;
   right: 0;
   bottom: 0;
@@ -68,25 +71,25 @@ main {
   font-family: Georgia, Times, 'Times New Roman', serif;
 }
 
-.landing-page-catchwords {
-  border-radius: 100px;
+.homepage-icons {
+  border-radius: 150px;
   height: 330px;
   width: 330px;
 }
 
-.word {
+.homepage-keyword {
   font-weight: bold;
   font-size: 20px;
   color: darkblue;
 }
 
-.worldwide-image {
+.change-image {
   height: 300px;
   width: 500px;
   border-radius: 50px;
 }
 
-.worldwide-text {
+.change-text {
   text-align: center;
   color: darkblue;
   font-weight: bold;

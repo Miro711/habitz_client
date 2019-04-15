@@ -34,7 +34,7 @@ class SignInPage extends Component {
     render() {
         const { errors } = this.state;
         return(
-            <main>
+            <main style={{padding: '20px'}}>
                 <h1 className="mx-3">Sign In</h1>
                 <form onSubmit={this.createSession} className="mx-3 my-2 p-1 clearfix">
                     {errors.length > 0 ? (

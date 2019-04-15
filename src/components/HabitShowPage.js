@@ -103,7 +103,7 @@ class HabitShowPage extends Component {
 			);
         }
         return(
-            <main>
+            <main className="pb-5" style={{padding: '20px'}}>
                 {alerts.length > 0 ? (
                     <div className="FormErrors">
                         {alerts.map(e => e.message).join(", ")}

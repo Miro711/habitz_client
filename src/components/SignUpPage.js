@@ -38,7 +38,7 @@ class SignUpPage extends Component {
     render() {
         const { errors } = this.state;
         return(
-            <main>
+            <main style={{padding: '20px'}}>
                 <h1 className="mx-3">Sign Up</h1>
                 <form onSubmit={this.createUser} className="mx-3 my-2 p-1 clearfix">
                     <div class="form-row">

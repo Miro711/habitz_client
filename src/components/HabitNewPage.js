@@ -27,7 +27,7 @@ class HabitNewPage extends Component {
     render(){
         const { errors = [] } = this.state;
         return(
-            <main>
+            <main style={{padding: '20px'}}>
                 <div className="card mx-4 my-4">
                     <div className="card-header bg-light">
                         <h1 className="text-success text-uppercase">New Habit Profile</h1>
