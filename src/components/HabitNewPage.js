@@ -33,7 +33,7 @@ class HabitNewPage extends Component {
                         <h1 className="text-success text-uppercase">New Habit Profile</h1>
                     </div>
                     <div className="card-body">
-                        <NewHabitForm onSubmit={this.createHabit} errors={errors} />
+                        <NewHabitForm onSubmit={this.createHabit} errors={errors} data={{}} />
                     </div>
                 </div>
             </main>
