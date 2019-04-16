@@ -5,6 +5,8 @@ import '../styles/TackledHabitDetails.css'
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 
+import {Line} from "react-chartjs-2";
+
 function TackledHabitDetails(props) {
 
     let start_date;
@@ -33,6 +35,24 @@ function TackledHabitDetails(props) {
     let hit_dates_array = hit_checkins_array.map(checkin => new Date(`${checkin.checkin_date}`+' (PT)'));
     let miss_dates_array = miss_checkins_array.map(checkin => new Date(`${checkin.checkin_date}`+' (PT)'));
 
+    let all_dates_array = new Array();
+    let pointer_date = start_date;
+    while (pointer_date <= today_date) {
+        all_dates_array.push(new Date (pointer_date));
+        pointer_date.setDate(pointer_date.getDate() + 1);
+    }
+    let total = 0;
+    let array_coordinates = all_dates_array.map((date, index) => {
+        const container = {};
+        container['x'] = date;
+        if ( hit_dates_array.some(x => x.getDate()==date.getDate() && x.getMonth() == date.getMonth() && x.getFullYear() == date.getFullYear()) ) {
+            total += 1;
+        }
+        container['y'] = total/(index+1)*100;
+        return container;
+    });
+    console.log(array_coordinates)
+
     const modifiers = {
         miss_checkins: miss_dates_array,
         hit_checkins: hit_dates_array,
@@ -48,7 +68,42 @@ function TackledHabitDetails(props) {
           backgroundColor: 'green',
         },
     };
-    
+
+    const options = {
+        maintainAspectRation: false,
+        scales: {
+            xAxes: [{
+                type: 'time',
+                time: {
+                    unit: 'day',
+                    // max: today_date,
+                    // min: start_date
+                },
+                // ticks: {
+                //     // autoSkip: false,
+                //     callback: (label) => label.toUpperCase(),
+                // },
+                // offset: true
+            }],
+            yAxes: [{
+                // ticks: {
+                //     beginAtZero: true
+                // },
+            }]
+        }
+    };
+
+    const data= {
+        // labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [{
+        label: "My First dataset",
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        // borderWidth: 1,
+        data: array_coordinates,
+        }]
+    };
+
     return (
         <>
             <div className="card-header">
@@ -93,6 +148,7 @@ function TackledHabitDetails(props) {
                     modifiers={modifiers}
                     modifiersStyles={modifiersStyles}
                 />
+                <Line data={data} width={100} height={50} options={options} />
             </div>
             <div className="card-footer">
                 <DeleteButton onDeleteClick={() => props.onDeleteClick(props.id)} />
