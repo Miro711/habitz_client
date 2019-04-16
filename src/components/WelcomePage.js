@@ -2,7 +2,7 @@ import React from 'react';
 // import { NavLink } from 'react-router-dom';
 import video from "../assets/videos/video.mp4";
 import shape from "../assets/images/shape.jpg"
-import envision from "../assets/images/envision2.jpg"
+import envision from "../assets/images/envision.jpg"
 import inspire from "../assets/images/inspire.jpg"
 import change from "../assets/images/change.jpg"
 
@@ -44,7 +44,7 @@ function WelcomePage(props) {
             </div>
 
             <div className="bucket banner container-fluid">
-                <div className="row">
+                <div className="row d-flex align-items-center">
                     <div className="container col-6 mt-4">
                         <div className="container"><img src={change} alt="Habits make us" className="change-image" /></div>
                     </div>

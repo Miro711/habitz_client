@@ -96,3 +96,35 @@ main {
   font-size: 30px;
   font-family: Georgia, Times, 'Times New Roman', serif;
 }
+
+.notes-image-background {
+  opacity: 0.3;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+}
+
+.track-image-background {
+  opacity: 0.7;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  z-index: -100;
+}
+
+.progress-image-background {
+  opacity: 0.7;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  z-index: -100;
+}

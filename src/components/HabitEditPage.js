@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NewHabitForm from "./NewHabitForm";
 import { Habit } from "../requests";
+import track from "../assets/images/track.jpg"
 
 class HabitEditPage extends Component {
     constructor(props) {
@@ -51,7 +52,8 @@ class HabitEditPage extends Component {
         }
 
         return (
-          <main>
+          <main style={{padding: '20px'}}>
+                <img src={track} alt="Track start" className="track-image-background" />
                 <div className="card mx-4 my-4">
                     <div className="card-header bg-light">
                         <h1 className="text-success text-uppercase">Edit Habit Profile</h1>

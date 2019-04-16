@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Habit } from '../requests';
+import notes from "../assets/images/notes.jpg"
 
 class HabitIndexPage extends Component {
     constructor(props){
@@ -38,7 +39,8 @@ class HabitIndexPage extends Component {
         }
         return(
             <main>
-                <h1 className="mx-5 text-uppercase text-success">My Habits</h1>
+                <img src={notes} alt="Sticky notes" className="notes-image-background" />
+                <h1 className="mx-5 text-uppercase text-dark">My Habits</h1>
                 <div className="container-fluid">
                     <div className="row mx-4">
                         {

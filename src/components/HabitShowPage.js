@@ -6,6 +6,7 @@ import NewTackledHabitForm from './NewTackledHabitForm';
 import DeleteButton from './DeleteButton';
 import '../styles/page.css';
 import { Habit, TackledHabit } from '../requests';
+import progress from "../assets/images/progress.jpg"
 
 class HabitShowPage extends Component {
     constructor(props){
@@ -91,6 +92,7 @@ class HabitShowPage extends Component {
         if (isLoading) {
 			return (
 				<main>
+                    <img src={progress} alt="Track start" className="progress-image-background" />
 					<h3>Loading...</h3>
 				</main>
 			);
@@ -98,12 +100,14 @@ class HabitShowPage extends Component {
         if (!habit) {
 			return (
 				<main>
+                    <img src={progress} alt="Track start" className="progress-image-background" />
 					<h1>Habit does not exist!</h1>
 				</main>
 			);
         }
         return(
             <main className="pb-5" style={{padding: '20px'}}>
+                <img src={progress} alt="Track start" className="progress-image-background" />
                 {alerts.length > 0 ? (
                     <div className="FormErrors">
                         {alerts.map(e => e.message).join(", ")}
