@@ -35,7 +35,7 @@ function TackledHabitDetails(props) {
     let hit_dates_array = hit_checkins_array.map(checkin => new Date(`${checkin.checkin_date}`+' (PT)'));
     let miss_dates_array = miss_checkins_array.map(checkin => new Date(`${checkin.checkin_date}`+' (PT)'));
 
-    let all_dates_array = new Array();
+    let all_dates_array = [];
     let pointer_date = new Date (start_date);
     while (pointer_date <= today_date) {
         all_dates_array.push(new Date (pointer_date));
@@ -45,7 +45,7 @@ function TackledHabitDetails(props) {
     let array_coordinates = all_dates_array.map((date, index) => {
         const container = {};
         container['x'] = date;
-        if ( hit_dates_array.some(x => x.getDate()==date.getDate() && x.getMonth() == date.getMonth() && x.getFullYear() == date.getFullYear()) ) {
+        if ( hit_dates_array.some(x => x.getDate()===date.getDate() && x.getMonth() === date.getMonth() && x.getFullYear() === date.getFullYear()) ) {
             total += 1;
         }
         container['y'] = total/(index+1)*100;
