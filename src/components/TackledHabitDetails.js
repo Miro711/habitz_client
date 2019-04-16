@@ -36,7 +36,7 @@ function TackledHabitDetails(props) {
     let miss_dates_array = miss_checkins_array.map(checkin => new Date(`${checkin.checkin_date}`+' (PT)'));
 
     let all_dates_array = new Array();
-    let pointer_date = start_date;
+    let pointer_date = new Date (start_date);
     while (pointer_date <= today_date) {
         all_dates_array.push(new Date (pointer_date));
         pointer_date.setDate(pointer_date.getDate() + 1);
@@ -51,7 +51,6 @@ function TackledHabitDetails(props) {
         container['y'] = total/(index+1)*100;
         return container;
     });
-    console.log(array_coordinates)
 
     const modifiers = {
         miss_checkins: miss_dates_array,
@@ -79,25 +78,32 @@ function TackledHabitDetails(props) {
                     // max: today_date,
                     // min: start_date
                 },
-                // ticks: {
-                //     // autoSkip: false,
-                //     callback: (label) => label.toUpperCase(),
-                // },
-                // offset: true
+                ticks: {
+                    // autoSkip: false,
+                    callback: (label) => label.toUpperCase(),
+                },
+                offset: false,
             }],
             yAxes: [{
-                // ticks: {
-                //     beginAtZero: true
-                // },
+                ticks: {
+                    beginAtZero: true
+                },
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Success Rate (%)'
+                },
             }]
+        },
+        title: {
+            display: true,
+            text: 'Success Rate over Time'
         }
     };
 
     const data= {
         // labels: ["January", "February", "March", "April", "May", "June", "July"],
         datasets: [{
-        label: "My First dataset",
-        backgroundColor: 'rgb(255, 99, 132)',
+        label: `${props.user.full_name}`,
         borderColor: 'rgb(255, 99, 132)',
         // borderWidth: 1,
         data: array_coordinates,
