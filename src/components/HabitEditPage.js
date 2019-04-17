@@ -52,9 +52,9 @@ class HabitEditPage extends Component {
         }
 
         return (
-          <main style={{padding: '20px'}}>
+          <main style={{paddingTop: '0px',paddingLeft: '20px',paddingRight: '20px',paddingBottom: '20px'}}>
                 <img src={track} alt="Track start" className="track-image-background" />
-                <div className="card mx-4 my-4">
+                <div className="card mx-4 my-4" style={{width: '65%'}}>
                     <div className="card-header bg-light">
                         <h1 className="text-success text-uppercase">Edit Habit Profile</h1>
                     </div>

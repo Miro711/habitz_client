@@ -50,46 +50,49 @@ class NewHabitForm extends Component {
         
             <form onSubmit={this.handleSubmit} onChange={this.handleChange} className="NewHabitForm mx-3 my-2 p-1 clearfix" >
                 <div className="form-group">
-                    <label htmlFor="name">Title</label><br />
+                    <label htmlFor="name" className="form-label">Habit Title</label><br />
                     <FormErrors errors={errors} forField="name"/>
-                    <input type="text" name="name" id="name" defaultValue={data.name} className="form-control" placeholder="Enter Name" />
+                    <input type="text" name="name" id="name" defaultValue={data.name} className="form-control" placeholder="Enter habit title" />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="description">Description (optional)</label><br />
+                    <label htmlFor="description" className="form-label">Description (Optional)</label><br />
                     <FormErrors errors={errors} forField="description"/>
-                    <textarea name="description" id="description" defaultValue={data.description} className="form-control" placeholder="Enter Description" />
+                    <textarea name="description" id="description" defaultValue={data.description} className="form-control" placeholder="Enter description" />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="habit_type">Habit Type</label> <br />
+                    <label htmlFor="habit_type" className="form-label">How would you like to track your habit goal?</label> <br />
                     <FormErrors errors={errors} forField="habit_type"/>
                     <select name="habit_type" id="habit_type" defaultValue={data.habit_type} className="form-control">
                         <option value="Binary">With Yes or No each day</option>
-                        <option value="Number">With a threshold</option>
+                        <option value="Number">With a Threshold</option>
                         {/* selected={data.habit_type === "Binary"} */}
                     </select>
                 </div>
+                <fieldset style={{display: this.state.is_binary ? 'none' : 'block'}}>
+                <legend className="form-label">When is a day successful?</legend>
                 <div className="form-row">
                     <div className="form-group col-md-4" style={{display: this.state.is_binary ? 'none' : 'block'}}>
-                        <label htmlFor="threshold">Threshold</label><br />
-                        <FormErrors errors={errors} forField="threshold"/>
-                        <input type="number" name="threshold" id="threshold" defaultValue={data.threshold} className="form-control" placeholder="Enter threshold" />
-                    </div>
-                    <div className="form-group col-md-4" style={{display: this.state.is_binary ? 'none' : 'block'}}>
-                        <label htmlFor="unit">Unit</label><br />
-                        <FormErrors errors={errors} forField="unit"/>
-                        <input type="text" name="unit" id="unit" defaultValue={data.unit} className="form-control" placeholder="Enter unit" />
-                    </div>
-                    <div className="form-group col-md-4" style={{display: this.state.is_binary ? 'none' : 'block'}}>
-                        <label htmlFor="min_or_max">Minimum/Maxium</label> <br />
+                        <label htmlFor="min_or_max" className="form-label">Minimum/Maxium</label> <br />
                         <FormErrors errors={errors} forField="min_or_max"/>
                         <select name="min_or_max" id="min_or_max" defaultValue={data.min_or_max} className="form-control">
                             <option value="At least">At least</option>
                             <option value="At most">At most</option>
                         </select>
                     </div>
+                    <div className="form-group col-md-4" style={{display: this.state.is_binary ? 'none' : 'block'}}>
+                        <label htmlFor="threshold" className="form-label">Threshold Value</label><br />
+                        <FormErrors errors={errors} forField="threshold"/>
+                        <input type="number" name="threshold" id="threshold" defaultValue={data.threshold} className="form-control" placeholder="Enter threshold value" />
+                    </div>
+                    <div className="form-group col-md-4" style={{display: this.state.is_binary ? 'none' : 'block'}}>
+                        <label htmlFor="unit" className="form-label">Threshold Unit</label><br />
+                        <FormErrors errors={errors} forField="unit"/>
+                        <input type="text" name="unit" id="unit" defaultValue={data.unit} className="form-control" placeholder="Enter threshold unit" />
+                    </div>
                 </div>
+                </fieldset>
                 <div className="form-group">
-                    <label htmlFor="target_streak">Target Streak (days)</label><br />
+                    <label htmlFor="target_streak" className="form-label">Target Streak of Successful Days</label><br />
                     <FormErrors errors={errors} forField="target_streak"/>
                     <input type="number" name="target_streak" id="target_streak" defaultValue={data.target_streak} className="form-control" placeholder="Enter target streak" />
                 </div>
@@ -97,7 +100,7 @@ class NewHabitForm extends Component {
                     <FormErrors errors={errors} forField="is_public"/>
                     <input type="checkbox" name="is_public" id="is_public" value="true" checked={data.is_public} className="form-group-input mx-1"/>
                     <input type="hidden" name="is_public" id="is_public" value="false" />
-                    <label htmlFor="is_public" className="form-check-label">Do you want to challenge public with your habit?</label>
+                    <label htmlFor="is_public" className="form-check-label form-label">Do you want to challenge others with your habit?</label>
                 </div>
                 {/* <div className="form-group">
                     <label htmlFor="frequency">Frequency</label> <br />
