@@ -38,20 +38,20 @@ function NewTackledHabitForm(props) {
         <div className="mx-4 mb-5">
             <form className="TackledHabitForm" onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="checkin_date">Check-in Date</label> <br />
+                    <label htmlFor="checkin_date" className="form-label">Check-in Date</label> <br />
                     <FormErrors noField forField="checkin_date" errors={errors} />
-                    <input type="date" name="checkin_date" id="checkin_date" max={today} placeholder="Check-in Date" className="form-control" />
+                    <input type="date" name="checkin_date" id="checkin_date" max={today} placeholder="Check-in Date" className="form-control form-field" />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="checkin_value">Check-in Value (Leave value blank for already checked-in day to undo that check-in)</label> <br />
+                    <label htmlFor="checkin_value" className="form-label">Check-in Value (Leave value blank for already checked-in day to remove that check-in)</label> <br />
                     <FormErrors noField forField="checkin_value" errors={errors} />
-                    <input type="number" name="checkin_value" id="checkin_value" step="any" placeholder="Check-in Value" className="form-control" />
+                    <input type="number" name="checkin_value" id="checkin_value" step="any" placeholder="Check-in Value" className="form-control form-field" />
                 </div>
-                <div className="form-group">
+                {/* <div className="form-group">
                         <FormErrors errors={errors} forField="is_reminder"/>
                         <input type="checkbox" name="is_reminder" id="is_reminder" value="1" className="form-group-input mx-1" />
                         <label htmlFor="is_reminder" className="form-check-label">Do you want to receive reminder prompts?</label><br />
-                </div>
+                </div> */}
                 <div className="actions">
                     <input type="submit" value="Check In" className="btn btn-success font-weight-bold" />
                 </div>

@@ -91,7 +91,7 @@ class HabitShowPage extends Component {
         const { habit, isLoading, errors, alerts } = this.state;
         if (isLoading) {
 			return (
-				<main>
+				<main style={{paddingTop: '0px',paddingLeft: '20px',paddingRight: '20px',paddingBottom: '20px'}}>
                     <img src={progress} alt="Track start" className="progress-image-background" />
 					<h3>Loading...</h3>
 				</main>
@@ -99,14 +99,14 @@ class HabitShowPage extends Component {
         }
         if (!habit) {
 			return (
-				<main>
+				<main style={{paddingTop: '0px',paddingLeft: '20px',paddingRight: '20px',paddingBottom: '20px'}}>
                     <img src={progress} alt="Track start" className="progress-image-background" />
 					<h1>Habit does not exist!</h1>
 				</main>
 			);
         }
         return(
-            <main className="pb-5" style={{padding: '20px'}}>
+            <main className="pb-5" style={{paddingTop: '0px',paddingLeft: '20px',paddingRight: '20px',paddingBottom: '20px'}}>
                 <img src={progress} alt="Track start" className="progress-image-background" />
                 {alerts.length > 0 ? (
                     <div className="FormErrors">

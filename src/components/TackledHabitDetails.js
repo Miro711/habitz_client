@@ -81,22 +81,32 @@ function TackledHabitDetails(props) {
                 ticks: {
                     // autoSkip: false,
                     callback: (label) => label.toUpperCase(),
+                    fontSize: 20,
                 },
                 offset: false,
             }],
             yAxes: [{
                 ticks: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    fontSize: 20,
                 },
                 scaleLabel: {
                     display: true,
-                    labelString: 'Success Rate (%)'
+                    labelString: 'Success Rate (%)',
+                    fontSize: 20,
                 },
             }]
         },
         title: {
             display: true,
-            text: 'Success Rate over Time'
+            text: 'Success Rate over Time',
+            fontSize: 20,
+        },
+        legend: {
+            display: true,
+            labels: {
+                fontSize: 20,
+            }
         }
     };
 
@@ -105,7 +115,10 @@ function TackledHabitDetails(props) {
         datasets: [{
         label: `${props.user.full_name}`,
         borderColor: 'rgb(255, 99, 132)',
-        // borderWidth: 1,
+        pointRadius: 6,
+        pointBackgroundColor: 'rgb(255, 99, 132)',
+        pointHoverBorderWidth: 6,
+        pointHoverRadius: 6,
         data: array_coordinates,
         }]
     };
@@ -115,37 +128,35 @@ function TackledHabitDetails(props) {
             <div className="card-header">
                 <p>
                     <h3>{props.user.full_name || 'DELETED'} </h3>
-                    <small>
+                    <small className="index-list">
                         Started tackling habit on {new Date(start_date.getFullYear(),start_date.getMonth(),start_date.getDate()).toDateString()}
                     </small>
                 </p>
-                <div className="progress">
-                    <div className="progress-bar" role="progressbar" style={{width: `${success_rate}%`}} aria-valuenow={success_rate} aria-valuemin="0" aria-valuemax="100">
-                        {success_rate}%
+                <span className="index-list">Success Rate</span> 
+                <div className="progress" style={{height: '30px'}}>
+                    <div className="progress-bar progress-bar-striped progress-bar-animated index-list" role="progressbar" style={{width: `${success_rate}%`}} aria-valuenow={success_rate} aria-valuemin="0" aria-valuemax="100">
+                    {Math.round(success_rate * 100) / 100}%
                     </div>
                 </div>
                 <br/>
-                <div className="progress">
-                    <div className="progress-bar" role="progressbar" style={{width: `${props.current_streak/props.target_streak*100}%`}} aria-valuenow={props.current_streak} aria-valuemin="0" aria-valuemax={props.target_streak}>
-                        Streak of {props.current_streak} Win(s)
+                <span className="index-list">Current Winning Streak</span> 
+                <div className="progress" style={{height: '30px'}}>
+                    <div className="progress-bar progress-bar-striped progress-bar-animated index-list" role="progressbar" style={{width: `${props.current_streak/props.target_streak*100}%`}} aria-valuenow={props.current_streak} aria-valuemin="0" aria-valuemax={props.target_streak}>
+                        {props.current_streak} 
                     </div>
                 </div>
             </div>
             <div className="card-body">
-                <p>
-                    Total Days in Habit: {total_days} <br/>
-                    Wins: {props.wins} <br/>
-                    Losses: {losses} <br/>
-                    Success Rate: {success_rate}% <br/>
+                <p className="d-flex flex-row d-flex justify-content-between mb-4 index-list">
+                    <div><strong>Total Days in Habit: </strong>{total_days}</div>
+                    <div style={{color: 'green'}}><strong>Wins: </strong>{props.wins}</div>
+                    <div style={{color: 'red'}}><strong>Losses: </strong>{losses}</div>
                 </p>
-                <p>
-                    Current Streak: {props.current_streak}
-                </p>
-                <p>
+                {/* <p>
                     {props.checkins.map(x => x.checkin_date + ", ")}<br/>
                     {props.checkins.map(x => x.checkin_value + ", ")}<br/>
                     {props.checkins.map(x => x.is_win + ", ")}
-                </p>
+                </p> */}
                 <DayPicker
                     todayButton="Go to Today"
                     numberOfMonths={Math.ceil(props.target_streak/30)}
