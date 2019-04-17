@@ -11,16 +11,16 @@ function TackledHabitDetails(props) {
 
     let start_date;
     let first_checkin_date;
-    let created_date = new Date(`${props.created_at}`+' (PT)');
+    let created_date = new Date(`${props.created_at} (PT)`);
     created_date.setHours(0,0,0,0);
     if (props.checkins.length === 0) {
-        start_date = created_date;
+        start_date = new Date(created_date);
     } else {
-        first_checkin_date = new Date(`${props.checkins[props.checkins.length-1].checkin_date}`+' (PT)');
+        first_checkin_date = new Date(`${props.checkins[props.checkins.length-1].checkin_date} (PT)`);
         if (first_checkin_date <= created_date) {
-            start_date = first_checkin_date;
+            start_date = new Date(first_checkin_date);
         } else if (first_checkin_date > created_date) {
-            start_date = created_date;
+            start_date = new Date(created_date);
         }
     }
 
@@ -32,8 +32,8 @@ function TackledHabitDetails(props) {
     let hit_checkins_array = props.checkins.filter(checkin => checkin.is_win === true);
     let miss_checkins_array = props.checkins.filter(checkin => checkin.is_win === false);
 
-    let hit_dates_array = hit_checkins_array.map(checkin => new Date(`${checkin.checkin_date}`+' (PT)'));
-    let miss_dates_array = miss_checkins_array.map(checkin => new Date(`${checkin.checkin_date}`+' (PT)'));
+    let hit_dates_array = hit_checkins_array.map(checkin => new Date(`${checkin.checkin_date} (PT)`));
+    let miss_dates_array = miss_checkins_array.map(checkin => new Date(`${checkin.checkin_date} (PT)`));
 
     let all_dates_array = [];
     let pointer_date = new Date (start_date);
