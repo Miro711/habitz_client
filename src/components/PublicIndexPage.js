@@ -51,13 +51,13 @@ class PublicIndexPage extends Component {
                                             <strong><h2><Link to={`/habits/${habit.id}`} className="text-dark text-capitalize">{habit.name}</Link></h2></strong>
                                         </div>
                                         <div className="card-body">
-                                            <p>
+                                            <p className="index-list">
                                                 <strong> Description:</strong> { habit.description } <br />
                                                 <strong> Goal: </strong> { habit.habit_type === 'Binary' ? 'Simple Yes/No per Day' : `${habit.min_or_max} ${habit.threshold} ${habit.unit}(s)/day` } <br />
                                                 <strong> Target Streak (days):</strong> { habit.target_streak } <br />
                                                 <strong> Created by:</strong> { habit.habit_owner.full_name || 'DELETED' } <br />
                                             </p>
-                                            <small>Created {new Date(habit.created_at).toLocaleString()}</small>
+                                            <small className="index-list">Created {new Date(habit.created_at).toLocaleString()}</small>
                                         </div>
                                         <div className="card-footer">
                                             <Link to={`/habits/${habit.id}`} className="btn btn-success font-weight-bold">Tackle Habit</Link>
