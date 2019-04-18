@@ -3,7 +3,7 @@ import React from 'react';
 import video from "../assets/videos/video.mp4";
 import shape from "../assets/images/shape.jpg"
 import envision from "../assets/images/envision.jpg"
-import inspire from "../assets/images/inspire.jpg"
+import inspire from "../assets/images/inspire.png"
 import change from "../assets/images/change.jpg"
 
 function WelcomePage(props) {
@@ -32,7 +32,7 @@ function WelcomePage(props) {
                     </div>
                     <div className="container col-4">
                         <div><img src={envision} alt="Envision the progress" className= "homepage-icons" /></div>
-                        <div className="homepage-keyword">Envision</div>
+                        <div className="homepage-keyword">Monitor</div>
                         <p className="word">the progress</p>
                     </div>
                     <div className="container col-4">
