@@ -17,8 +17,8 @@ function NavBar(props) {
 	}
 
 	return (
-		<nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-			<NavLink className="navbar-brand text-success font-weight-bold" to="/">
+		<nav className="navbar navbar-expand-sm navbar-dark bg-dark" style={{fontSize: '18px'}}>
+			<NavLink className="navbar-brand text-success font-weight-bold" to="/" style={{fontSize: '30px'}}>
 				Habitz <FontAwesomeIcon icon={faUserCog} />
 			</NavLink>
 			<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
