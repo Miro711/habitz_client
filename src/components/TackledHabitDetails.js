@@ -1,9 +1,9 @@
 import React from 'react';
 import DeleteButton from './DeleteButton';
-import '../styles/TackledHabitDetails.css'
 
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
+// import styles from '../styles/cssmodules.css';
 
 import {Line} from "react-chartjs-2";
 
@@ -14,18 +14,18 @@ function TackledHabitDetails(props) {
     let created_date = new Date(`${props.created_at} (PT)`);
     created_date.setHours(0,0,0,0);
     if (props.checkins.length === 0) {
-        start_date = new Date(created_date);
+        start_date = new Date(created_date.getTime());
     } else {
         first_checkin_date = new Date(`${props.checkins[props.checkins.length-1].checkin_date} (PT)`);
         if (first_checkin_date <= created_date) {
-            start_date = new Date(first_checkin_date);
+            start_date = new Date(first_checkin_date.getTime());
         } else if (first_checkin_date > created_date) {
-            start_date = new Date(created_date);
+            start_date = new Date(created_date.getTime());
         }
     }
 
     let today_date = new Date(new Date().getFullYear(),new Date().getMonth() , new Date().getDate());
-    let total_days = 1 + (today_date.getTime() - start_date.getTime())/1000/60/60/24;
+    let total_days = Math.round(1 + (today_date.getTime() - start_date.getTime())/1000/60/60/24);
     let losses = total_days - props.wins;
     let success_rate = props.wins / total_days * 100;
 
@@ -36,9 +36,9 @@ function TackledHabitDetails(props) {
     let miss_dates_array = miss_checkins_array.map(checkin => new Date(`${checkin.checkin_date} (PT)`));
 
     let all_dates_array = [];
-    let pointer_date = new Date (start_date);
+    let pointer_date = new Date (start_date.getTime());
     while (pointer_date <= today_date) {
-        all_dates_array.push(new Date (pointer_date));
+        all_dates_array.push(new Date (pointer_date.getTime()));
         pointer_date.setDate(pointer_date.getDate() + 1);
     }
     let total = 0;
@@ -164,6 +164,7 @@ function TackledHabitDetails(props) {
                     // selectedDays={hit_dates_array}
                     modifiers={modifiers}
                     modifiersStyles={modifiersStyles}
+                    // classNames={ styles }
                 />
                 <Line data={data} width={100} height={50} options={options} />
             </div>

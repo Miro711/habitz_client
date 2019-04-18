@@ -7,6 +7,7 @@ class NewHabitForm extends Component {
         super(props);
         this.state = {
           is_binary: (this.props.data.habit_type === "Binary" || this.props.data.habit_type === undefined)  ? true : false, 
+          is_share: (this.props.data.is_public === false || this.props.data.is_public === undefined)  ? false : true,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -29,8 +30,7 @@ class NewHabitForm extends Component {
     }
 
     handleChange(event){
-        // event.preventDefault();
-		const { currentTarget } = event;
+		const { target, currentTarget } = event;
         const fD = new FormData(currentTarget);
         //event.target.value
         if (fD.get('habit_type') === 'Number'){
@@ -42,6 +42,11 @@ class NewHabitForm extends Component {
                 is_binary: true,
             });
         }
+        if (target.type === 'checkbox'){
+            this.setState({
+                is_share: target.checked,
+            });
+        } 
     }
 
     render() {
@@ -98,7 +103,7 @@ class NewHabitForm extends Component {
                 </div>
                 <div className="form-group">
                     <FormErrors errors={errors} forField="is_public"/>
-                    <input type="checkbox" name="is_public" id="is_public" value="true" checked={data.is_public} className="form-group-input mx-1"/>
+                    <input type="checkbox" name="is_public" id="is_public" value="true" checked={this.state.is_share} className="form-group-input mx-1"/>
                     <input type="hidden" name="is_public" id="is_public" value="false" />
                     <label htmlFor="is_public" className="form-check-label form-label">Do you want to challenge others with your habit?</label>
                 </div>

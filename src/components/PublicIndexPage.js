@@ -25,15 +25,15 @@ class PublicIndexPage extends Component {
         const { habits, isLoading } = this.state;
         if (isLoading) {
 			return (
-				<main>
-					<h3>Loading...</h3>
+				<main style={{paddingTop: '0px',paddingLeft: '20px',paddingRight: '20px',paddingBottom: '20px'}}>
+					<h3 className="mx-4">Loading...</h3>
 				</main>
 			);
         }
         if (habits.length === 0) {
 			return (
-				<main>
-					<h1>There can be no habits if they were never created!</h1>
+				<main style={{paddingTop: '0px',paddingLeft: '20px',paddingRight: '20px',paddingBottom: '20px'}}>
+					<h1 className="mx-4">There can be no habits if they were never created!</h1>
 				</main>
 			);
         }
