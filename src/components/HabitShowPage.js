@@ -35,7 +35,7 @@ class HabitShowPage extends Component {
                     let temp = {...this.state.habit};
                     let index = this.state.habit.tackled_habits.findIndex(tackle => tackle.id === tackled_habit.id);
                     if (index === -1) {
-                        temp.tackled_habits= this.state.habit.tackled_habits.concat([tackled_habit]);
+                        temp.tackled_habits= [tackled_habit].concat(this.state.habit.tackled_habits);
                         this.setState({habit: temp});
                     } else {
                         temp.tackled_habits = this.state.habit.tackled_habits;
