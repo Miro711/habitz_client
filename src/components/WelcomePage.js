@@ -10,10 +10,10 @@ function WelcomePage(props) {
     return (
         <main>
             <div className="position-relative bucket homepage-intro text-center">
-                <div className="col-md-5 p-lg-5 mx-auto my-5">
+                <div className="col-md-10 p-lg-5 mx-auto my-5">
                     <article>
-                        <h2 className="brand-name">Habitz</h2>
-                        <h4 className="moto">Your tool to track daily goals towards cultivating good habits and breaking bad habits</h4>
+                        {/* <h1 className="brand-name">Habitz</h1> */}
+                        <h1 className="moto">Hello <span style={{color: 'green'}}>Good</span> <em className="brand-name">Habitz</em>! Bye-Bye <span style={{color: 'red'}}>Bad</span> <em className="brand-name">Habitz</em>!</h1>
                         {/* <NavLink to="/sign_up" className="btn btn-success font-weight-bold mr-3">Sign Up</NavLink>
                         <NavLink to="/sign_in" className="btn btn-success mx-2 font-weight-bold">Sign In</NavLink> */}
                     </article>
@@ -27,18 +27,18 @@ function WelcomePage(props) {
                 <div className="row">
                     <div className="container col-4">
                         <div><img src={shape} alt="Shape up your habits" className="homepage-icons" /></div>
-                        <div className="mt-4 homepage-keyword">Shape Up</div>
-                        <p>your habits</p>
+                        <div className="homepage-keyword">Shape Up</div>
+                        <p className="word">your habits</p>
                     </div>
                     <div className="container col-4">
                         <div><img src={envision} alt="Envision the progress" className= "homepage-icons" /></div>
-                        <div className="mt-4 homepage-keyword">Envision</div>
-                        <p>the progress</p>
+                        <div className="homepage-keyword">Envision</div>
+                        <p className="word">the progress</p>
                     </div>
                     <div className="container col-4">
                         <div><img src={inspire} alt="Inspire one another" className="homepage-icons" /></div>
-                        <div className="mt-4 homepage-keyword" >Inspire</div>
-                        <p>one another</p>
+                        <div className="homepage-keyword" >Inspire</div>
+                        <p className="word">one another</p>
                     </div>
                 </div>
             </div>
