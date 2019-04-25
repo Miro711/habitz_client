@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Summary
+
+This project is a REACT front-end for my Habitz app. The back-end server is needed for this app to run. Please go to my github and fork Habitz. Then, run Habitz in localhost 3000 as a server.
+
 ## Available Scripts
 
 In the project directory, you can run:
